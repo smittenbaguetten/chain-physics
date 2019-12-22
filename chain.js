@@ -8,7 +8,7 @@ var bgImage = new Image(),
 chainImage = new Image(),
 flail = new Image();
 
-bgImage.src = "images/background.gif"
+//bgImage.src = "images/background.gif"
 chainImage.src = "images/chain.gif"
 flail.src = "images/flail.gif"
 
@@ -50,7 +50,7 @@ var main = function() {
 		
 		var ctx = this.canvas.getContext("2d");
 		ctx.clearRect(0, 0, 1000, 1500);
-		ctx.drawImage(bgImage, 0, 0)
+		//ctx.drawImage(bgImage, 0, 0)
 		
 		for(i=0; i<CHAINS; i++){
 			moveImage(chainImage, chain[i], ctx)
@@ -61,7 +61,7 @@ var main = function() {
 	}
 
 	function update(time) {
-		chain[0].velY = 10
+		chain[0].velY = -5
 		for(i=0; i<CHAINS; i++){
 			var posx = chain[0].x, 
 				posy = chain[0].y;
@@ -103,15 +103,17 @@ var main = function() {
 }
 
 window.onload = function() {
-	this.canvas = document.getElementById("cv");
+	canvas = document.getElementById("cv");
 	
-	document.addEventListener('keyDown',(event) => {
+	canvas.addEventListener('keyDown',(event) => {
 		const keyName = event.key
+		console.log(keyName)
 		
 		if(keyName == 'UP'){
-			chain[i].y -= 10*time
+			console.log(keyName)
+			chain[0].y -= 10*time
 		} else if(keyName == 'LEFT') {
-			chain[i].x -= 10*time
+			chain[0].x -= 10*time
 		}
 	});
 	
